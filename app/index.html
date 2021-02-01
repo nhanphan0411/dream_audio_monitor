@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="shortcut icon" href="#">
+		<title>Volume Meter</title>
+		<link href="style.css" rel="stylesheet">
+		<!-- Include the main app logic -->
+    <script src="main.js"></script>
+    <!-- <script src="data.js"></script> -->
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+    </head>
+    <body>
+      <div class="row">
+        <div class="column">
+          <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
+        <div class="column">
+          <div id="observablehq-chart-88e717b9">
+            <script type="module">
+              import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+              import define from "https://api.observablehq.com/@nhanphan0411/dreamlex-noise-monitor.js?v=3";
+              new Runtime().module(define, name => {
+                if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-88e717b9"));
+              });
+            </script>
+            </div>
+        </div>
+      </div>
+
+    </body>
+</html>
