@@ -31,8 +31,9 @@ if (navigator.getUserMedia) {
         requestAnimationFrame(loopingFunction);
         let array = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(array);
-        
-        getData(array, dataUnitArray);
+
+        const average = calAverage(array);
+        getData(average, dataUnitArray);
         
         if (counter%3600 == 0){
           let values = 0;
@@ -49,11 +50,12 @@ if (navigator.getUserMedia) {
           console.log(obj)
         }
         
-        drawWeb(array, canvasContext)
+        drawWeb(array, average, canvasContext)
+
         counter++;
       }
       
-      function getData(array, dataArray){
+      function calAverage(array){
         array = [...array];
         let values = 0;
         let length = array.length;
@@ -63,12 +65,15 @@ if (navigator.getUserMedia) {
               }
         
         let average = values / length;
+        return average;
+      }
+      
+      function getData(average, dataArray){
         dataArray.push(average)
-
       }
 
 
-      function drawWeb(data, ctx){
+      function drawWeb(data, average, ctx){
         let h = canvas.height;
         let w = canvas.width;
         let minDimension = (h < w) ? h : w
@@ -102,6 +107,9 @@ if (navigator.getUserMedia) {
         helper.drawPolygon(points.end, { close: true })
 
         helper.drawCircle([w / 2, h / 2], minDimension / 2, { color: colors[2] })
+        ctx.fillStyle = '#ffffff';
+        ctx.font = "48px trebuchet ms";
+        ctx.fillText(Math.round(average), w/2 - 25, h/2 + 10);
 
         dataCopy = helper.mutateData(dataCopy, "scale", 1.4)
         points = helper.getPoints("circle", minDimension / 2, [w / 2, h / 2], dataCopy.length, dataCopy)
@@ -126,7 +134,7 @@ if (navigator.getUserMedia) {
         canvasContext.fillStyle = '#BadA55';
         canvasContext.fillRect(0, 300 - average, 150, 300);
         canvasContext.fillStyle = '#262626';
-        canvasContext.font = "48px impact";
+        canvasContext.font = "48px trebuchet ms";
         canvasContext.fillText(Math.round(average), -2, 300);
       }
 

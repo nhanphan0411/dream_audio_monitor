@@ -1,16 +1,17 @@
 body {
-    color: #888;
+    /* color: #888; */
     /* background: #262626; */
     margin: 0;
     padding: 40px;
     text-align: center;
-    font-family: "helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-family: 'Trebuchet MS', sans-serif;
   }
   
   #canvas {
     /* position: absolute; */
     top: 150px;
-    left: 45%;
+    left: 30%;
     text-align: center;
   }
 
@@ -20,4 +21,14 @@ body {
   
   .column {
     flex: 50%;
+  }
+
+  h3 {
+    color: #ff9234;
+    font-size: 25px;
+  }
+
+  p{
+    font-style: italic;
+    color: #ff9234;
   }
