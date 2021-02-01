@@ -18,7 +18,17 @@
           <p>The Lab Saigon x Nhan Phan</p>
         </div>
         <div class="column">
-          <div id="observablehq-chart-88e717b9">
+            <div id="observablehq-chart-f1acffce" class="haha"></div>
+            <script type="module">
+            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+            import define from "https://api.observablehq.com/@nhanphan0411/realtime-horizon-chart.js?v=3";
+            new Runtime().module(define, name => {
+              if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-f1acffce"));
+              return ["update"].includes(name);
+            });
+            </script>
+
+            <div id="observablehq-chart-88e717b9">
             <script type="module">
               import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
               import define from "https://api.observablehq.com/@nhanphan0411/dreamlex-noise-monitor.js?v=3";
